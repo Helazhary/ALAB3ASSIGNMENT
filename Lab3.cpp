@@ -67,25 +67,29 @@ int insertion_sort_comparisons(int* arr, int n)
 
 int* generate_k_inversion(int k, int n) 
 {
-	int* arr = new int[n];
+    int inversions = 0;
+    int* arr = new int[n];
     iota(arr, arr + n, 1); // initialize the array as 1, 2, 3, ..
     
-  int inversions = 0;
     int i = 0;
-    while (inversions < k && i < n) {
-        int j = i - 1;
-        while (j >= 0 && arr[j] < arr[j+1] && inversions < k) {
-            swap(arr[j], arr[j+1]);
-            inversions++;
-            j--;
+    while (i < n - 1 && inversions < k)
+    {
+        int j = 0;
+        while (j < n - i - 1 && inversions < k)
+        {
+            if (arr[j] < arr[j + 1])
+            {
+                swap(arr[j], arr[j + 1]);
+                inversions++;
+            }
+            j++;
         }
         i++;
     }
-
-	return arr;	
-	
-	
+    
+    return arr;   
 }
+
 
 void task1 ()
 {
@@ -167,8 +171,8 @@ cout<<setw(4)<<left<<i<<"  "<<setw(4)<<bubble_sort_comparisons(generate_k_invers
 int main()
 {
 task1();
-task2();
-task3();
+  task2();
+   task3();
 
 
 
