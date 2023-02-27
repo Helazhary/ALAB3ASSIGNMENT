@@ -49,16 +49,17 @@ int insertion_sort_comparisons(int* arr, int n)
 		key = arr[i];  
         j = i - 1;  
         
-        while (j >= 0 && ++counter && arr[j] > key) 
+        while (j >= 0 && arr[j] > key) 
         {  
             arr[j + 1] = arr[j];  
-            j = j - 1; 
+            j = j - 1;
+            counter++; 
 
         }  
         if (j<0)
-		
-		
-		arr[j + 1] = key;  
+		    arr[j + 1] = key;
+        else
+            counter++;  
     }
    
     return counter;
@@ -165,9 +166,9 @@ cout<<setw(4)<<left<<i<<"  "<<setw(4)<<bubble_sort_comparisons(generate_k_invers
 
 int main()
 {
-   task1();
-   task2();
-   task3();
+task1();
+task2();
+task3();
 
 
 
